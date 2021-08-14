@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class BookReservationTest extends TestCase
+class BookManagementTest extends TestCase
 {
 
 
@@ -21,8 +21,11 @@ class BookReservationTest extends TestCase
             'title' => 'Cool Book Title',
             'author'=> 'Victor'
         ]);
-        $response->assertOk();
+
+        $book = Book::first();
+      //  $response->assertOk();
         $this->assertCount(1 ,Book::all());
+        $response->assertRedirect($book->path());
     }
 
     /** @test */
@@ -38,6 +41,7 @@ class BookReservationTest extends TestCase
     }
 
 
+
     /** @test */
     public function a_author_is_required()
     {
@@ -51,23 +55,53 @@ class BookReservationTest extends TestCase
     }
 
 
+
     /** @test */
     public function a_book_can_be_updated()
     {
-        $this->withoutExceptionHandling();
+       // $this->withoutExceptionHandling();
         $this->post('/books' , [
             'title' => 'cool title',
             'author'=> 'victor'
         ]);
 
-        $book = Book::first();
+        $book = Book::first();   // old title
 
-        $response = $this->patch('/books/' . $book->id ,[
+        $response = $this->patch($book->path() ,[
             'title' => 'new title',
             'author'=> 'new author'
         ]);
 
         $this->assertEquals('new title',Book::first()->title);
         $this->assertEquals('new author',Book::first()->author);
+        // fresh() : to fetch the new data
+        $response->assertRedirect($book->fresh()->path());
     }
+
+
+    /** @test */
+
+     public function a_book_can_be_deleted()
+     {
+         $this->post('/books' , [
+             'title' => 'cool title',
+             'author'=> 'victor'
+         ]);
+
+         $book = Book::first();
+
+         $this->assertCount(1 , Book::all());
+
+         $response = $this->delete($book->path());
+
+         $this->assertCount(0 , Book::all());
+
+         $response->assertRedirect('/books');
+
+
+
+     }
+
+
+
 }
