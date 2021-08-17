@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\billing\BankPaymentGateway;
 use App\billing\CreditBankPaymentGateway;
 use App\billing\PaymentGatewayContract;
+use App\Models\Channel;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -34,6 +36,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // option 1 - every single view
+        View::share('channels',Channel::orderBy('name')->get());
     }
 }

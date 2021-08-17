@@ -6,6 +6,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\AuthorsController;
 use App\Http\Controllers\payOrderController;
+use App\Http\Controllers\ChannelController;
+use App\Http\Controllers\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,4 +40,7 @@ Route::delete('/books/{book}', [BooksController::class, 'destroy']);
 Route::post('/author', [AuthorsController::class, 'store']);
 
 Route::get('pay',[payOrderController::class , 'store']);
+Route::get('channels',[ChannelController::class , 'index']);
+
+Route::get('post/create',[PostController::class , 'create']);
 
