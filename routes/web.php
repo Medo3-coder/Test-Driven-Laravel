@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\AuthorsController;
+use App\Http\Controllers\payOrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,5 +37,5 @@ Route::delete('/books/{book}', [BooksController::class, 'destroy']);
 
 Route::post('/author', [AuthorsController::class, 'store']);
 
-
+Route::get('pay',[payOrderController::class , 'store']);
 
