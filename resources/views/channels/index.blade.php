@@ -2,10 +2,7 @@
 <html>
 <head> Channels </head>
 <body>
-
-@foreach($channels as $channel)
-    <li> {{$channel->name}}</li>
-@endforeach
+@include('partials.channels.list')
 
 </body>
 </html>

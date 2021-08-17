@@ -8,13 +8,13 @@
 
 <form action="#" method="post">
 
-    <select name="channel_id" id="channel_id">
+    /*
+    this to customize the name of field
+    */
 
-        @foreach($channels as $channel)
-            <option value="{{$channel->id}}">{{$channel->name}}</option>
-        @endforeach
+@include('partials.channels.dropdown',['field'=>'my_channels'])
 
-    </select>
+
 
 </form>
 

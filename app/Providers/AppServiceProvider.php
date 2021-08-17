@@ -59,6 +59,11 @@ class AppServiceProvider extends ServiceProvider
 
        // option 3 - dedicated class
        // attach the specific view who take the data but with dedicated class
-        View::composer(['post.create','channels.index'] , ChannelsComposer::class);
+
+
+        // the new is we extract our files to partials file and send it in by composers
+
+
+        View::composer('partials.channels.*' , ChannelsComposer::class);
     }
 }
