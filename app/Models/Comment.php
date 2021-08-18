@@ -12,7 +12,9 @@ class Comment extends Model
 
     use HasFactory;
 
-    //Comment belong to post but post can have many comment    : one to many polymorphic relation
+    //Comment belong to video
+
+    // commentable function is in the parent model
 
     public function commentable()
     {
