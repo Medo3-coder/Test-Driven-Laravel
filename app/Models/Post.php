@@ -20,4 +20,12 @@ class Post extends Model
         //post can have many comment
         return $this->morphMany(Comment::class,'commentable');
     }
+
+
+    // a post can have many Tags
+
+    public  function  tags()
+    {
+         return $this->morphToMany(Tag::class,'taggable');
+    }
 }
