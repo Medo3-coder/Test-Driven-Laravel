@@ -10,7 +10,7 @@ class Image extends Model
     protected $guarded = [];
     use HasFactory;
 
-    // this one to one polymorphic relation 
+    // this one to one polymorphic relation
     public function imageable()
     {
         return $this->morphTo();
