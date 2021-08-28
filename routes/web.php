@@ -8,6 +8,7 @@ use App\Http\Controllers\AuthorsController;
 use App\Http\Controllers\payOrderController;
 use App\Http\Controllers\ChannelController;
 use App\Http\Controllers\PostController;
+use Illuminate\Support\Str;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +21,7 @@ use App\Http\Controllers\PostController;
 */
 
 Route::get('/', function () {
+    dd(Str::partNumber('1254632576'));
 
     return view('welcome');
 

@@ -9,6 +9,7 @@ use App\Http\Views\Composers\ChannelsComposer;
 use App\Models\Channel;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -37,21 +38,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // option 1 - every single view
-        //  View::share('channels',Channel::orderBy('name')->get());
 
+        Str::macro('partNumber' , function ($part){
 
-//----------------------------------------------------------------------------------
-        // option 2 - granular views with wildcards
-
-        // wild card be like ['post.*'] all
-        //the use of view composer
-        // the difference in attach the specific view who take the data
-       // View::composer(['post.create','channels.index'],function ($view){
-
-        //    $view->with('channels',Channel::orderBy('name')->get());
-
-      //  });
+            return 'AB-' . substr($part , 0 , 3) .'-'. substr($part ,3);
+        });
 
 
 
