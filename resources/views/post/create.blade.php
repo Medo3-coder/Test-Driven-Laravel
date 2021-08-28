@@ -5,21 +5,18 @@
 </head>
 <hr>
 <body>
+<table>
+    @foreach($posts as $post)
 
-<form action="#" method="post">
-
-    /*
-    this to customize the name of field
-    */
-
-@include('partials.channels.dropdown',['field'=>'my_channels'])
-
+        <tr>
+            <td>{{$post->active}}</td>
+            <td>{{$post->title}}</td>
+        </tr>
 
 
-</form>
+    @endforeach
+</table>
 
-
-
-
+{{$posts->appends(request()->input())->links()}}
 </body>
 </html>

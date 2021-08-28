@@ -8,6 +8,7 @@ use App\billing\PaymentGatewayContract;
 use App\Http\Views\Composers\ChannelsComposer;
 use App\Mixins\SrtMixins;
 use App\Models\Channel;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Routing\ResponseFactory;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -56,7 +57,7 @@ class AppServiceProvider extends ServiceProvider
             ];
         });
 
-
+        Paginator::useBootstrap();
 
         //----------------------------------------------------------------------------------
 

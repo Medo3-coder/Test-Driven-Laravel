@@ -3,17 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Channel;
+use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Pipeline\Pipeline;
 
 class PostController extends Controller
 {
-    public function create()
+    public function index()
     {
-           //remove the query and share it by app service provider
+         $posts = Post::allPosts();
 
-        return view('post.create');
+        return view('post.create' , compact('posts'));
     }
 
-    //   $channels = Channel::orderBy('name')->get();   to make by alphabetical order
+
 }
 

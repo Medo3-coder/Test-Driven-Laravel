@@ -23,7 +23,7 @@ class PostFactory extends Factory
     {
         return [
             'title' =>$this->faker->sentence,
-            'body' =>$this->faker->paragraph
+            'active' =>$this->faker->randomFloat(1 , 0 ,1),
         ];
     }
 }

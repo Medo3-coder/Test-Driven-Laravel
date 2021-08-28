@@ -23,9 +23,9 @@ use Illuminate\Support\Facades\Response;
 
 Route::get('/', function () {
     //dd(Str::PartNumber('1254632576'));
-    dd(Str::Prefix('1254632576'));
+   // dd(Str::Prefix('1254632576'));
 
-    return Response::errorJson();
+ //   return Response::errorJson();
     //   return Response::errorJson('huge error found');   i can send message in functions
 
     return view('welcome');
@@ -49,5 +49,5 @@ Route::post('/author', [AuthorsController::class, 'store']);
 Route::get('pay',[payOrderController::class , 'store']);
 Route::get('channels',[ChannelController::class , 'index']);
 
-Route::get('post/create',[PostController::class , 'create']);
+Route::get('post',[PostController::class , 'index']);
 
