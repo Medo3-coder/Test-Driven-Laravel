@@ -9,6 +9,7 @@ use App\Http\Controllers\payOrderController;
 use App\Http\Controllers\ChannelController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Response;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +22,10 @@ use Illuminate\Support\Str;
 */
 
 Route::get('/', function () {
-    dd(Str::partNumber('1254632576'));
+   // dd(Str::partNumber('1254632576'));
+
+    return Response::errorJson();
+    //   return Response::errorJson('huge error found');   i can send message in functions
 
     return view('welcome');
 
