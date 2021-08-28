@@ -22,7 +22,8 @@ use Illuminate\Support\Facades\Response;
 */
 
 Route::get('/', function () {
-   // dd(Str::partNumber('1254632576'));
+    //dd(Str::PartNumber('1254632576'));
+    dd(Str::Prefix('1254632576'));
 
     return Response::errorJson();
     //   return Response::errorJson('huge error found');   i can send message in functions

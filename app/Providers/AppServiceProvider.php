@@ -6,6 +6,7 @@ use App\billing\BankPaymentGateway;
 use App\billing\CreditBankPaymentGateway;
 use App\billing\PaymentGatewayContract;
 use App\Http\Views\Composers\ChannelsComposer;
+use App\Mixins\SrtMixins;
 use App\Models\Channel;
 use Illuminate\Routing\ResponseFactory;
 use Illuminate\Support\Facades\View;
@@ -40,10 +41,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
-        Str::macro('partNumber' , function ($part){
+        //Str::macro('partNumber' , function ($part){
 
-            return 'AB-' . substr($part , 0 , 3) .'-'. substr($part ,3);
-        });
+        //    return 'AB-' . substr($part , 0 , 3) .'-'. substr($part ,3);
+       //      });
+
+        Str::mixin(new SrtMixins());    // i  have accsess to both methods in SrtMixins class
 
 
         ResponseFactory::macro('errorJson', function ($message = 'Default error Message'){
